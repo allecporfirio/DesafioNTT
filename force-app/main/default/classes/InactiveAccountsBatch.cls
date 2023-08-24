@@ -11,7 +11,7 @@ public class InactiveAccountsBatch implements Database.Batchable<SObject> {
             (SELECT Id, StageName, CloseDate FROM Opportunities 
                 WHERE CloseDate = LAST_N_DAYS:120 OR StageName = 'Negotiation/Review'), 
             (SELECT Id, ActivityDate FROM Tasks
-                WHERE ActivityDate > LAST_N_DAYS:90)
+                WHERE ActivityDate = LAST_N_DAYS:90)
          FROM Account
       ]);
 
